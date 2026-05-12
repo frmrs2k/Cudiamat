@@ -1,0 +1,39 @@
+body{
+	background: linear-gradient(to top, #f5c4cc, #f76681);
+	font-family:  sans-serif;
+	text-align: center;
+	padding-top: 25px;
+  	
+}
+
+
+p {
+    font: 65px "Edwardian Script ITC", cursive;
+    color: white;
+}
+
+
+label{
+   	font-weight: bold;
+	color: white;
+}
+
+
+input{
+  	padding: 8px;
+	width: 200px;
+    border: 2px solid rgb(24, 6, 6);
+	border-radius: 5px; 
+	
+}
+
+button{
+    padding: 5px 15px;
+   	background-color: #b30047;
+   	margin-top: 5px;
+    color: white;
+}
+
+button:hover{
+    	background-color: #ff3366;
+}
