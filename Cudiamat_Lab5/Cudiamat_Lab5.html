@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculatorDesign.css">
+    <script src="javascript.js" defer></script>
+</head>
+
+<body>
+
+<div class="calBody">
+    <input type="text" id="result" class="op">
+
+    <table>
+        <tr>
+            <td><div class="btn design" onclick="number('7')">7</div></td>
+            <td><div class="btn design" onclick="number('8')">8</div></td>
+            <td><div class="btn design" onclick="number('9')">9</div></td>
+            <td><div class="btn operator" onclick="op('÷')">÷</div></td>
+        </tr>
+
+        <tr>
+            <td><div class="btn design" onclick="number('4')">4</div></td>
+            <td><div class="btn design" onclick="number('5')">5</div></td>
+            <td><div class="btn design" onclick="number('6')">6</div></td>
+            <td><div class="btn operator" onclick="op('x')">×</div></td>
+        </tr>
+
+        <tr>
+            <td><div class="btn design" onclick="number('1')">1</div></td>
+            <td><div class="btn design" onclick="number('2')">2</div></td>
+            <td><div class="btn design" onclick="number('3')">3</div></td>
+            <td><div class="btn operator" onclick="op('-')">-</div></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><div class="btn designwide" onclick="number('0')">0</div></td>
+            <td><div class="btn design" onclick="op('.')">.</div></td>
+            <td><div class="btn operator" onclick="op('+')">+</div></td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><div class="btn designwide" onclick="clearResult()">C</div></td>
+            <td colspan="2"><div class="btn designwide" onclick="calculate()">=</div></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
