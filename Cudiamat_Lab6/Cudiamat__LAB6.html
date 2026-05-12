@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="css.css">
+
+</head>
+<body>
+
+<h2>Inventory Management System</h2>
+<form id="productForm">
+    <input type="text" id="name" placeholder="Product Name" >
+    <input type="number" id="price" placeholder="Price" >
+    <input type="number" id="stock" placeholder="Stock Quantity" >
+    <button type="submit">Add Product</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody id="inventoryTable">
+    </tbody>
+</table>
+
+<script>
+    var inventory=[
+        {id: 1, name: "Wireless Mouse", price: "$25.00", stock: 10},
+        {id: 2, name: "Keyboard", price: "$45.00", stock: "Out of Stock"},
+        {id: 3, name: "Galax Monitor", price: "$50000.00", stock: 20},
+        {id: 4, name: "RTX 9090 1/1", price: "$1000000.00", stock: 1},
+        {id: 5, name: "Gaming Speaker", price: "$12345.00", stock: 123}
+    ];
+    function renderTable(){
+        const tbody=document.getElementById("inventoryTable");
+        let rows ="";
+
+        inventory.forEach(product=>{
+            let displayStock =product.stock== 0 ? "Out of Stock" :product.stock;
+            let stockColor = displayStock ==="Out of Stock" ? "red":"black"; 
+            rows += `
+                <tr>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td style="color:${stockColor}">${displayStock}</td>
+                </tr>`;
+        });
+        tbody.innerHTML=rows;
+    }
+    renderTable();
+
+    const form=document.getElementById("productForm");
+    form.addEventListener("submit",function(event) {
+    event.preventDefault();
+
+    const name=document.getElementById("name").value;
+    const price=parseFloat(document.getElementById("price").value);
+    const stock=parseInt(document.getElementById("stock").value);
+
+    const newProduct = {
+        id: inventory.length + 1,
+        name: name,
+        price:"$"+price.toFixed(2),
+        stock: stock==0 ? "Out of Stock":stock
+    };
+        inventory.push(newProduct);
+        renderTable();
+        form.reset();
+    });
+</script>
+
+</body>
+</html>

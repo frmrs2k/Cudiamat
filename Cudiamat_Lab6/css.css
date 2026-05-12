@@ -1,0 +1,53 @@
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+}
+
+button{
+    padding:8px 12px;
+    background:green;
+    color:white;
+    border:none;
+}
+
+.container{
+    width:700px;
+    margin:auto;
+}
+
+input{
+    padding:8px;
+    margin:5px;
+     width: 374px;  
+}
+
+form{
+    background-color: rgb(221, 218, 218);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;          
+    flex-wrap: wrap;                 
+}
+    
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:#333;
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ccc;
+}
+
+th, td {
+    text-align: left; 
+    vertical-align: middle; 
+}
