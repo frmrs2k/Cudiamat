@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+<h2>Inventory Management System</h2>
+<form id="productForm">
+    <input type="text" id="name" placeholder="Product Name">
+    <input type="number" id="price" placeholder="Price">
+    <input type="number" id="stock" placeholder="Stock Quantity">
+    <button type="submit">Add Product</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody id="inventoryTable">
+    </tbody>
+</table>
+
+<script>
+
+const inventorySystem = {
+
+    inventory: [
+        {id:1,name:"Wireless Mouse", price:"$25.00", stock:10},
+        {id:2,name:"Keyboard", price:"$45.00",stock:0},
+        {id:3,name:"Galax Monitor",price:"$50000.00",stock:20},
+        {id:4,name:"RTX 9090 1/1",price:"$1000000.00",stock:1},
+        {id:5,name:"Gaming Speaker", price:"$12345.00", stock:123}
+    ],
+    renderTable:function(){
+        const tbody=document.getElementById("inventoryTable");
+        let rows ="";
+        this.inventory.forEach(function(product){
+            let displayStock = product.stock == 0?"Out of Stock":product.stock;
+            let stockColor = product.stock == 0 ? "red":"black";
+            
+            rows += "<tr>" +
+            "<td>"+ product.id +"</td>" +
+            "<td>" +product.name +"</td>"+
+            "<td>" +product.price+"</td>" +
+            "<td style='color:"+stockColor +"'>"+ displayStock +"</td>" +
+            "</tr>";
+        });
+        tbody.innerHTML=rows;
+    },
+
+    addProduct:function(name, price, stock){
+        const newProduct ={
+            id:this.inventory.length + 1,
+            name:name,
+            price:"$"+price.toFixed(2),
+            stock: stock
+        };
+        for(let i=this.inventory.length;i>0;i--){
+            this.inventory[i]=this.inventory[i-1];
+        }
+        this.inventory[0] =newProduct; 
+        this.renderTable();
+    }
+
+};
+inventorySystem.renderTable();
+const form=document.getElementById("productForm");
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    const name=document.getElementById("name").value;
+    const price=parseFloat(document.getElementById("price").value);
+    const stock=parseInt(document.getElementById("stock").value);
+    inventorySystem.addProduct(name, price, stock);
+    form.reset();
+});
+</script>
+</body>
+</html>
