@@ -1,4 +1,4 @@
-import { getPokemonList } from "./yey/pokeapi";
+import { getPokemon } from "./yey/pokeapi";
 
 const typeColors: Record<string, string> = {
   grass: "bg-green-500",
@@ -20,7 +20,10 @@ const typeColors: Record<string, string> = {
 };
 
 export default async function Home() {
-  const pokemonList = await getPokemonList(20);
+  const ditto = await getPokemon();
+
+  // keep SAME structure as list so UI doesn't change
+  const pokemonList = [ditto];
 
   return (
     <main className="bg-orange-100 rounded-2xl shadow-lg p-4 text-center">
@@ -63,13 +66,11 @@ export default async function Home() {
 
             <div className="flex justify-between mt-3 text-sm px-2">
               <div className="text-blue-500 font-medium">
-                Height:{" "}
-                <span className="text-black">{p.height}</span>
+                Height: <span className="text-black">{p.height}</span>
               </div>
 
               <div className="text-green-500 font-medium">
-                Weight:{" "}
-                <span className="text-black">{p.weight}</span>
+                Weight: <span className="text-black">{p.weight}</span>
               </div>
             </div>
           </div>
