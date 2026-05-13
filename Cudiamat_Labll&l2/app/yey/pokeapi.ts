@@ -13,26 +13,10 @@ export type Pokemon = {
   }[];
 };
 
-export type PokemonListItem = {
-  url: string;
-};
-
-export async function getPokemonList(limit = 20): Promise<Pokemon[]> {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`, {
+export async function getPokemon(): Promise<Pokemon> {
+  const res = await fetch("https://pokeapi.co/api/v2/pokemon/ditto", {
     cache: "no-store",
   });
 
-  const data: { results: PokemonListItem[] } = await res.json();
-
-  const pokemonList = await Promise.all(
-    data.results.map(async (p) => {
-      const res = await fetch(p.url, {
-        cache: "no-store",
-      });
-
-      return res.json() as Promise<Pokemon>;
-    })
-  );
-
-  return pokemonList;
+  return res.json();
 }
